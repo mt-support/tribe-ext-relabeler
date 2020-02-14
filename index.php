@@ -6,8 +6,8 @@
  * Extension Class: Tribe__Extension__Relabeler
  * Author:          Modern Tribe, Inc.
  * Author URI:      http://m.tri.be/1971
- * License:         GPLv2 or later
- * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
+ * License:         GPLv3 or later
+ * License URI:     ttps://www.gnu.org/licenses/gpl-3.0.html
  */
 
 // Do not load directly.
