@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     The Events Calendar Extension: Relabeler
  * Description:     Adds option to WP Admin > Events > Display for altering labels. For example, you can change the word "Events" to a different word such as "Gigs".
- * Version:         1.0.1
+ * Version:         1.0.2
  * Extension Class: Tribe__Extension__Relabeler
  * Author:          Modern Tribe, Inc.
  * Author URI:      http://m.tri.be/1971
