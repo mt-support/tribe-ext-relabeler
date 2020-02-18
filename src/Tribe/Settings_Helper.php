@@ -5,12 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-// Not sure if this is needed if we have the check below.
-// Without the check below this didn't seem to do anything.
-if ( class_exists( 'Tribe__Settings_Helper' ) ) {
-	return;
-}
-
 /**
  * Helper for inserting/removing fields on the WP Admin Tribe Settings pages
  */
