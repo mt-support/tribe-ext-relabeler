@@ -41,6 +41,6 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 * Fixed class check for Settings_Helper in order to make it work next to other extensions.
 
-= 1.0.1
+= 1.0.1 =
 
 * Initial release
