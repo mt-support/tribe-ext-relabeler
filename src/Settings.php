@@ -323,25 +323,6 @@ if ( ! class_exists( Settings::class ) ) {
 		}
 
 		/**
-		 * Here is an example of getting some HTML for the Settings Header.
-		 *
-		 * @return string
-		 */
-		private function get_setting_intro_text() {
-			$result = '<h3>' . esc_html_x( 'Limit Week View Time Range', 'Settings header', PLUGIN_TEXT_DOMAIN ) . '</h3>';
-			$result .= '<div style="margin-left: 20px;">';
-			$result .= '<p>';
-			$result .= esc_html_x( 'Set up the time range your week view should show. The start hour should be earlier than the end hour.', 'Settings', PLUGIN_TEXT_DOMAIN );
-			$result .= '</p>';
-			$result .= '<p>';
-			$result .= esc_html_x( 'It is recommended to have at least 8-9 hours between the start hour and the end hour.', 'Settings', PLUGIN_TEXT_DOMAIN );
-			$result .= '</p>';
-			$result .= '</div>';
-
-			return $result;
-		}
-
-		/**
 		 * Get an HTML link to the General settings tab
 		 *
 		 * @return string HTML link element to the general settings tab
