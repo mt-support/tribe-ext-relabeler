@@ -65,6 +65,13 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 	 * Extension initialization and hooks.
 	 */
 	public function init() {
+
+		load_plugin_textdomain( 'PLUGIN_TEXT_DOMAIN', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+
+		if ( ! $this->php_version_check() ) {
+			return;
+		}
+
 		// Settings area.
 		if ( ! class_exists( 'Tribe__Extension__Settings_Helper' ) ) {
 			require_once dirname( __FILE__ ) . '/src/Tribe/Settings_Helper.php';
@@ -88,6 +95,35 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 		add_filter( 'tribe_organizer_label_singular_lowercase', array( $this, 'get_organizer_single_lowercase' ) );
 		add_filter( 'tribe_organizer_label_plural', array( $this, 'get_organizer_plural' ) );
 		add_filter( 'tribe_organizer_label_plural_lowercase', array( $this, 'get_organizer_plural_lowercase' ) );
+	}
+
+	/**
+	 * Check if we have a sufficient version of PHP. Admin notice if we don't and user should see it.
+	 *
+	 * @link https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/ All extensions require PHP 5.6+.
+	 *
+	 * @return bool
+	 */
+	private function php_version_check() {
+		$php_required_version = '5.6';
+
+		if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
+			if (
+				is_admin()
+				&& current_user_can( 'activate_plugins' )
+			) {
+				$message = '<p>';
+				$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
+				$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
+				$message .= '</p>';
+
+				tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
+			}
+
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
