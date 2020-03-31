@@ -15,6 +15,7 @@
 
 namespace Tribe\Extensions\Relabeler;
 
+use Tribe\Extensions\Limit_Week_View_Time_Range\Settings;
 use Tribe__Autoloader;
 use Tribe__Extension;
 
@@ -62,6 +63,32 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 	}
 
 	/**
+	 * Get this plugin's options prefix.
+	 *
+	 * Settings_Helper will append a trailing underscore before each option.
+	 *
+	 * @see \Tribe\Extensions\Example\Settings::set_options_prefix()
+	 *
+	 * @return string
+	 */
+	private function get_options_prefix() {
+		return (string) str_replace( '-', '_', PLUGIN_TEXT_DOMAIN );
+	}
+
+	/**
+	 * Get Settings instance.
+	 *
+	 * @return Settings
+	 */
+	private function get_settings() {
+		if ( empty( $this->settings ) ) {
+			$this->settings = new Settings( $this->get_options_prefix() );
+		}
+
+		return $this->settings;
+	}
+
+	/**
 	 * Extension initialization and hooks.
 	 */
 	public function init() {
@@ -73,6 +100,8 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 		}
 
 		$this->class_loader();
+
+		$this->get_settings();
 
 		// Settings area.
 		if ( ! class_exists( 'Tribe__Extension__Settings_Helper' ) ) {
