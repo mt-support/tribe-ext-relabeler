@@ -49,7 +49,7 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 	 *      @type $option_name string Full text for the altered label
 	 * }
 	 */
-	protected $label_cache = array();
+	protected $label_cache = [];
 
 	/**
 	 * Setup the Extension's properties.
@@ -104,22 +104,22 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 		$this->get_settings();
 
 		// Events.
-		add_filter( 'tribe_event_label_singular', array( $this, 'get_event_single' ) );
-		add_filter( 'tribe_event_label_singular_lowercase', array( $this, 'get_event_single_lowercase' ) );
-		add_filter( 'tribe_event_label_plural', array( $this, 'get_event_plural' ) );
-		add_filter( 'tribe_event_label_plural_lowercase', array( $this, 'get_event_plural_lowercase' ) );
+		add_filter( 'tribe_event_label_singular', [ $this, 'get_event_single' ] );
+		add_filter( 'tribe_event_label_singular_lowercase', [ $this, 'get_event_single_lowercase' ] );
+		add_filter( 'tribe_event_label_plural', [ $this, 'get_event_plural' ] );
+		add_filter( 'tribe_event_label_plural_lowercase', [ $this, 'get_event_plural_lowercase' ] );
 
 		// Venues.
-		add_filter( 'tribe_venue_label_singular', array( $this, 'get_venue_single' ) );
-		add_filter( 'tribe_venue_label_singular_lowercase', array( $this, 'get_venue_single_lowercase' ) );
-		add_filter( 'tribe_venue_label_plural', array( $this, 'get_venue_plural' ) );
-		add_filter( 'tribe_venue_label_plural_lowercase', array( $this, 'get_venue_plural_lowercase' ) );
+		add_filter( 'tribe_venue_label_singular', [ $this, 'get_venue_single' ] );
+		add_filter( 'tribe_venue_label_singular_lowercase', [ $this, 'get_venue_single_lowercase' ] );
+		add_filter( 'tribe_venue_label_plural', [ $this, 'get_venue_plural' ] );
+		add_filter( 'tribe_venue_label_plural_lowercase', [ $this, 'get_venue_plural_lowercase' ] );
 
 		// Organizers.
-		add_filter( 'tribe_organizer_label_singular', array( $this, 'get_organizer_single' ) );
-		add_filter( 'tribe_organizer_label_singular_lowercase', array( $this, 'get_organizer_single_lowercase' ) );
-		add_filter( 'tribe_organizer_label_plural', array( $this, 'get_organizer_plural' ) );
-		add_filter( 'tribe_organizer_label_plural_lowercase', array( $this, 'get_organizer_plural_lowercase' ) );
+		add_filter( 'tribe_organizer_label_singular', [ $this, 'get_organizer_single' ] );
+		add_filter( 'tribe_organizer_label_singular_lowercase', [ $this, 'get_organizer_single_lowercase' ] );
+		add_filter( 'tribe_organizer_label_plural', [ $this, 'get_organizer_plural' ] );
+		add_filter( 'tribe_organizer_label_plural_lowercase', [ $this, 'get_organizer_plural_lowercase' ] );
 	}
 
 	/**
@@ -177,7 +177,7 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 	 * @return string HTML link element to the general settings tab
 	 */
 	protected function general_settings_tab_link() {
-		$url = Tribe__Settings::instance()->get_url( array( 'tab' => 'general' ) );
+		$url = Tribe__Settings::instance()->get_url( [ 'tab' => 'general' ] );
 
 		return sprintf(
 			'<a href="%2$s">%1$s</a>',
