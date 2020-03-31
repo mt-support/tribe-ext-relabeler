@@ -341,5 +341,20 @@ if ( ! class_exists( Settings::class ) ) {
 			return $result;
 		}
 
+		/**
+		 * Get an HTML link to the General settings tab
+		 *
+		 * @return string HTML link element to the general settings tab
+		 */
+		protected function general_settings_tab_link() {
+			$url = Tribe__Settings::instance()->get_url( [ 'tab' => 'general' ] );
+
+			return sprintf(
+				'<a href="%2$s">%1$s</a>',
+				esc_html__( 'General', 'tribe-extension' ),
+				esc_url( $url )
+			);
+		}
+
 	} // class
 }

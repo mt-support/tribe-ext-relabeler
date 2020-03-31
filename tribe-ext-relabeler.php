@@ -5,7 +5,7 @@
  * Plugin URI:          https://theeventscalendar.com/extensions/change-labels-events-venues-organizers/
  * GitHub Plugin URI:   https://github.com/mt-support/tribe-ext-relabeler
  * Version:             1.0.2
- * Extension Class:     Tribe__Extension__Relabeler
+ * Extension Class:     Tribe\Extensions\Relabeler\Main
  * Author:              Modern Tribe, Inc.
  * Author URI:          http://m.tri.be/1971
  * License:             GPLv3 or later
@@ -15,7 +15,6 @@
 
 namespace Tribe\Extensions\Relabeler;
 
-use Tribe\Extensions\Limit_Week_View_Time_Range\Settings;
 use Tribe__Autoloader;
 use Tribe__Extension;
 
@@ -40,7 +39,7 @@ if ( ! class_exists( 'Tribe__Extension' ) ) {
 /**
  * Extension main class, class begins loading on init() function.
  */
-class Tribe__Extension__Relabeler extends Tribe__Extension {
+class Main extends Tribe__Extension {
 
 	/**
 	 * Caches labels that are retrieved from the database.
@@ -168,21 +167,6 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 		$this->class_loader->register_autoloader();
 
 		return $this->class_loader;
-	}
-
-	/**
-	 * Get an HTML link to the General settings tab
-	 *
-	 * @return string HTML link element to the general settings tab
-	 */
-	protected function general_settings_tab_link() {
-		$url = Tribe__Settings::instance()->get_url( [ 'tab' => 'general' ] );
-
-		return sprintf(
-			'<a href="%2$s">%1$s</a>',
-			esc_html__( 'General', 'tribe-extension' ),
-			esc_url( $url )
-		);
 	}
 
 	/**
