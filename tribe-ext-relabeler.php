@@ -13,9 +13,22 @@
  * Text Domain:       tribe-ext-relabeler
  */
 
-// Do not load directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	die( '-1' );
+namespace Tribe\Extensions\Relabeler;
+
+use Tribe__Autoloader;
+use Tribe__Extension;
+
+/**
+ * Define Constants
+ */
+
+if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
+	define( __NAMESPACE__ . '\NS', __NAMESPACE__ . '\\' );
+}
+
+if ( ! defined( \Tribe\Extensions\Relabeler\NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
+	// `Tribe\Extensions\Example\PLUGIN_TEXT_DOMAIN` is defined
+	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-relabeler' );
 }
 
 // Do not load unless Tribe Common is fully loaded.
