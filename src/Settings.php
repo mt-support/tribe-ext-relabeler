@@ -204,8 +204,8 @@ if ( ! class_exists( Settings::class ) ) {
 				],
 				'label_event_single' => [
 					'type'            => 'text',
-					'label'           => esc_html__( 'Events', 'the-events-calendar' ),
-					'default'         => esc_attr__( 'Events', 'the-events-calendar' ),
+					'label'           => esc_html__( 'Event', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Event', 'the-events-calendar' ),
 					'tooltip'         => esc_html__( 'Singular label for Events.', PLUGIN_TEXT_DOMAIN ),
 					'validation_type' => 'html',
 				],
