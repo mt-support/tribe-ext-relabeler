@@ -4,7 +4,7 @@
  * Description:         Adds option to WP Admin > Events > Display for altering labels. For example, you can change the word "Events" to a different word such as "Gigs".
  * Plugin URI:          https://theeventscalendar.com/extensions/change-labels-events-venues-organizers/
  * GitHub Plugin URI:   https://github.com/mt-support/tribe-ext-relabeler
- * Version:             1.0.2
+ * Version:             1.1.0
  * Extension Class:     Tribe\Extensions\Relabeler\Main
  * Author:              Modern Tribe, Inc.
  * Author URI:          http://m.tri.be/1971
@@ -180,7 +180,7 @@ class Main extends Tribe__Extension {
 	public function get_label( $key, $default = null ) {
 
 		$key = $this->get_options_prefix() . "_" . $key;
-		
+
 		if ( ! isset( $this->label_cache[ $key ] ) ) {
 			$this->label_cache[ $key ] = tribe_get_option( $key, $default );
 		}
