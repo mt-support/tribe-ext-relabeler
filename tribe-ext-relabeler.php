@@ -72,6 +72,8 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 			return;
 		}
 
+		$this->class_loader();
+
 		// Settings area.
 		if ( ! class_exists( 'Tribe__Extension__Settings_Helper' ) ) {
 			require_once dirname( __FILE__ ) . '/src/Tribe/Settings_Helper.php';
@@ -124,6 +126,26 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Use Tribe Autoloader for all class files within this namespace in the 'src' directory.
+	 *
+	 * @return Tribe__Autoloader
+	 */
+	public function class_loader() {
+		if ( empty( $this->class_loader ) ) {
+			$this->class_loader = new Tribe__Autoloader;
+			$this->class_loader->set_dir_separator( '\\' );
+			$this->class_loader->register_prefix(
+				\Tribe\Extensions\Relabeler\NS,
+				__DIR__ . DIRECTORY_SEPARATOR . 'src'
+			);
+		}
+
+		$this->class_loader->register_autoloader();
+
+		return $this->class_loader;
 	}
 
 	/**
