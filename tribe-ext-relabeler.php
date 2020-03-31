@@ -103,12 +103,6 @@ class Tribe__Extension__Relabeler extends Tribe__Extension {
 
 		$this->get_settings();
 
-		// Settings area.
-		if ( ! class_exists( 'Tribe__Extension__Settings_Helper' ) ) {
-			require_once dirname( __FILE__ ) . '/src/Tribe/Settings_Helper.php';
-		}
-		add_action( 'admin_init', array( $this, 'add_settings' ) );
-
 		// Events.
 		add_filter( 'tribe_event_label_singular', array( $this, 'get_event_single' ) );
 		add_filter( 'tribe_event_label_singular_lowercase', array( $this, 'get_event_single_lowercase' ) );
