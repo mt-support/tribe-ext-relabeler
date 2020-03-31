@@ -347,7 +347,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 * @return string HTML link element to the general settings tab
 		 */
 		protected function general_settings_tab_link() {
-			$url = Tribe__Settings::instance()->get_url( [ 'tab' => 'general' ] );
+			$url = \Tribe__Settings::instance()->get_url( [ 'tab' => 'general' ] );
 
 			return sprintf(
 				'<a href="%2$s">%1$s</a>',
