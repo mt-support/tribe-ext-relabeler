@@ -7,7 +7,7 @@
  * Author:          Modern Tribe, Inc.
  * Author URI:      http://m.tri.be/1971
  * License:         GPLv3 or later
- * License URI:     ttps://www.gnu.org/licenses/gpl-3.0.html
+ * License URI:     https://www.gnu.org/licenses/gpl-3.0.html
  */
 
 // Do not load directly.
