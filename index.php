@@ -10,6 +10,7 @@
  * Author URI:      http://m.tri.be/1971
  * License:         GPLv3 or later
  * License URI:     https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       tribe-ext-relabeler
  */
 
 // Do not load directly.
