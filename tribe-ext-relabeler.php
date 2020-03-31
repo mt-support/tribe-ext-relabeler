@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:     The Events Calendar Extension: Relabeler
- * Description:     Adds option to WP Admin > Events > Display for altering labels. For example, you can change the word "Events" to a different word such as "Gigs".
- * Plugin URI:        https://theeventscalendar.com/extensions/change-labels-events-venues-organizers/
- * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-relabeler
- * Version:         1.0.2
- * Extension Class: Tribe__Extension__Relabeler
- * Author:          Modern Tribe, Inc.
- * Author URI:      http://m.tri.be/1971
- * License:         GPLv3 or later
- * License URI:     https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       tribe-ext-relabeler
+ * Plugin Name:         The Events Calendar Extension: Relabeler
+ * Description:         Adds option to WP Admin > Events > Display for altering labels. For example, you can change the word "Events" to a different word such as "Gigs".
+ * Plugin URI:          https://theeventscalendar.com/extensions/change-labels-events-venues-organizers/
+ * GitHub Plugin URI:   https://github.com/mt-support/tribe-ext-relabeler
+ * Version:             1.0.2
+ * Extension Class:     Tribe__Extension__Relabeler
+ * Author:              Modern Tribe, Inc.
+ * Author URI:          http://m.tri.be/1971
+ * License:             GPLv3 or later
+ * License URI:         https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:         tribe-ext-relabeler
  */
 
 namespace Tribe\Extensions\Relabeler;

@@ -16,7 +16,6 @@ Easily limit the visible time range in week view.
 Activating this extension will give you the possibility to change the labels for Events, Organizers, and Venues.
 It will add the options to WP Admin > Events > Display for altering labels.
 
-
 == Installation ==
 
 Install and activate like any other plugin!
