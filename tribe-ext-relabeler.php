@@ -181,7 +181,7 @@ class Main extends Tribe__Extension {
 
 		$key = $this->get_options_prefix() . "_" . $key;
 
-		if ( ! isset( $this->label_cache[ $key ] ) ) {
+		if ( empty( $this->label_cache[ $key ] ) ) {
 			$this->label_cache[ $key ] = tribe_get_option( $key, $default );
 		}
 
