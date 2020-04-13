@@ -61,7 +61,7 @@ class Main extends Tribe__Extension {
 	 * @return string
 	 */
 	private function get_options_prefix() {
-		return (string) str_replace( '-', '_', PLUGIN_TEXT_DOMAIN );
+		return (string) str_replace( '-', '_', 'tribe-ext-relabeler' );
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Main extends Tribe__Extension {
 	 */
 	public function init() {
 
-		load_plugin_textdomain( 'PLUGIN_TEXT_DOMAIN', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'tribe-ext-relabeler', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 		if ( ! $this->php_version_check() ) {
 			return;
@@ -127,11 +127,11 @@ class Main extends Tribe__Extension {
 				&& current_user_can( 'activate_plugins' )
 			) {
 				$message = '<p>';
-				$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
+				$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-relabeler' ), $this->get_name(), $php_required_version );
 				$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
 				$message .= '</p>';
 
-				tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
+				tribe_notice( 'tribe-ext-relabeler-php-version', $message, [ 'type' => 'error' ] );
 			}
 
 			return false;
