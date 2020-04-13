@@ -130,23 +130,20 @@ class Main extends Tribe__Extension {
 	private function php_version_check() {
 		$php_required_version = '5.6';
 
-		if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
-			if (
-				is_admin()
-				&& current_user_can( 'activate_plugins' )
-			) {
-				$message = '<p>';
-				$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
-				$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
-				$message .= '</p>';
+		if ( version_compare( PHP_VERSION, $php_required_version, '>=' ) ) {
+			return true;
+		}
+		
+		if ( is_admin() && current_user_can( 'activate_plugins' ) ) {
+			$message = '<p>';
+			$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
+			$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
+			$message .= '</p>';
 
-				tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
-			}
-
-			return false;
+			tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
 		}
 
-		return true;
+		return false;
 	}
 
 	/**
