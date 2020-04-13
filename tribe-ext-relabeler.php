@@ -22,15 +22,6 @@ use Tribe__Extension;
  * Define Constants
  */
 
-if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
-	define( __NAMESPACE__ . '\NS', __NAMESPACE__ . '\\' );
-}
-
-if ( ! defined( \Tribe\Extensions\Relabeler\NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
-	// `Tribe\Extensions\Example\PLUGIN_TEXT_DOMAIN` is defined
-	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-relabeler' );
-}
-
 // Do not load unless Tribe Common is fully loaded.
 if ( ! class_exists( 'Tribe__Extension' ) ) {
 	return;
@@ -159,7 +150,7 @@ class Main extends Tribe__Extension {
 			$this->class_loader = new Tribe__Autoloader;
 			$this->class_loader->set_dir_separator( '\\' );
 			$this->class_loader->register_prefix(
-				\Tribe\Extensions\Relabeler\NS,
+				__NAMESPACE__ . '\\',
 				__DIR__ . DIRECTORY_SEPARATOR . 'src'
 			);
 		}
