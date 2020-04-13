@@ -38,7 +38,7 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 = 1.1.0 TBD =
 
-* Reworked the extension based on the new template for better compatibility
+* Tweak - Rework the extension based on the new template for better compatibility.
 
 = 1.0.1 =
 
