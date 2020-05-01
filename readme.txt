@@ -36,10 +36,10 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
-= 1.1.0 TBD =
+= [1.1.0] 2020-05-01 =
 
 * Tweak - Rework the extension based on the new template for better compatibility.
 
-= 1.0.1 =
+= [1.0.1] =
 
 * Initial release
