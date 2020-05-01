@@ -1,0 +1,173 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: The Events Calendar Extension: Relabeler\n"
+"POT-Creation-Date: 2020-03-31 14:35+0200\n"
+"PO-Revision-Date: 2020-03-31 14:31+0200\n"
+"Last-Translator: Andras Guseo <aguseo@gmail.com>\n"
+"Language-Team: Andras Guseo <aguseo@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: tribe-ext-relabeler.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: src/Settings.php:199
+msgid "Labels"
+msgstr ""
+
+#: src/Settings.php:203
+msgid ""
+"The following fields allow you to change the default labels. Inputting "
+"something other than the default will change that word everywhere it appears."
+msgstr ""
+
+#: src/Settings.php:207 src/Settings.php:208
+msgid "Event"
+msgstr ""
+
+#: src/Settings.php:209
+msgid "Singular label for Events."
+msgstr ""
+
+#: src/Settings.php:214 src/Settings.php:215
+msgid "event"
+msgstr ""
+
+#: src/Settings.php:217
+#, php-format
+msgid ""
+"Lowercase singular label for Events. You might wish to also modify the "
+"\"Events URL Slug\" found in the %s events settings tab."
+msgstr ""
+
+#: src/Settings.php:224 src/Settings.php:225
+msgid "Events"
+msgstr ""
+
+#: src/Settings.php:226
+msgid "Plural label for Events."
+msgstr ""
+
+#: src/Settings.php:231 src/Settings.php:232
+msgid "events"
+msgstr ""
+
+#: src/Settings.php:234
+#, php-format
+msgid ""
+"Lowercase plural label for Events. You might wish to also modify the "
+"\"Single Event URL Slug\" found in the %s events settings tab."
+msgstr ""
+
+#: src/Settings.php:241 src/Settings.php:242
+msgid "Venue"
+msgstr ""
+
+#: src/Settings.php:243
+msgid "Singular label for Venues."
+msgstr ""
+
+#: src/Settings.php:248 src/Settings.php:249
+msgid "venue"
+msgstr ""
+
+#: src/Settings.php:250
+msgid "Lowercase singular label for Venues."
+msgstr ""
+
+#: src/Settings.php:255 src/Settings.php:256
+msgid "Venues"
+msgstr ""
+
+#: src/Settings.php:257
+msgid "Plural label for Venues."
+msgstr ""
+
+#: src/Settings.php:262 src/Settings.php:263
+msgid "venues"
+msgstr ""
+
+#: src/Settings.php:264
+msgid "Lowercase plural label for Venues."
+msgstr ""
+
+#: src/Settings.php:269 src/Settings.php:270
+msgid "Organizer"
+msgstr ""
+
+#: src/Settings.php:271
+msgid "Singular label for Organizers."
+msgstr ""
+
+#: src/Settings.php:276 src/Settings.php:277
+msgid "organizer"
+msgstr ""
+
+#: src/Settings.php:278
+msgid "Lowercase singular label for Organizers."
+msgstr ""
+
+#: src/Settings.php:283 src/Settings.php:284
+msgid "Organizers"
+msgstr ""
+
+#: src/Settings.php:285
+msgid "Plural label for Organizers."
+msgstr ""
+
+#: src/Settings.php:290 src/Settings.php:291
+msgid "organizers"
+msgstr ""
+
+#: src/Settings.php:292
+msgid "Lowercase plural label for Organizers."
+msgstr ""
+
+#: src/Settings.php:335
+msgid "General"
+msgstr ""
+
+#: src/Settings_Helper.php:130
+msgid "Miscellaneous Settings"
+msgstr ""
+
+#: tribe-ext-relabeler.php:139
+#, php-format
+msgid ""
+"%s requires PHP version %s or newer to work. Please contact your website "
+"host and inquire about updating PHP."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "The Events Calendar Extension: Relabeler"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid ""
+"https://theeventscalendar.com/extensions/change-labels-events-venues-"
+"organizers/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Adds option to WP Admin > Events > Display for altering labels. For example, "
+"you can change the word \"Events\" to a different word such as \"Gigs\"."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/1971"
+msgstr ""
