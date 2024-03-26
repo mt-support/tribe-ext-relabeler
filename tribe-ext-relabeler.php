@@ -91,6 +91,13 @@ class Main extends Tribe__Extension {
 
 		$this->get_settings();
 
+        //TIcket
+        add_filter( 'tribe_get_ticket_label_singular', [ $this, 'get_ticket_single' ] );
+        add_filter( 'tribe_get_ticket_label_singular_lowercase', [ $this, 'get_ticket_single_lowercase' ] );
+        add_filter( 'tribe_get_ticket_label_plural', [ $this, 'get_ticket_plural' ] );
+        add_filter( 'tribe_get_ticket_label_plural_lowercase', [ $this, 'get_ticket_plural_lowercase' ] );
+
+
 		// Events.
 		add_filter( 'tribe_event_label_singular', [ $this, 'get_event_single' ] );
 		add_filter( 'tribe_event_label_singular_lowercase', [ $this, 'get_event_single_lowercase' ] );
@@ -178,7 +185,56 @@ class Main extends Tribe__Extension {
 		return $this->label_cache[ $key ];
 	}
 
-	/**
+
+    /**
+	 * Gets the label
+	 *
+	 * @param $label string
+	 *
+	 * @return string
+	 */
+    public function get_ticket_single( $label ) {
+        return $this->get_label( 'label_ticket_single', $label );
+    }
+
+
+    /**
+	 * Gets the label
+	 *
+	 * @param $label string
+	 *
+	 * @return string
+	 */
+    public function get_ticket_single_lowercase( $label ) {
+        return $this->get_label( 'label_ticket_single_lowercase', $label );
+    }
+
+
+    /**
+	 * Gets the label
+	 *
+	 * @param $label string
+	 *
+	 * @return string
+	 */
+    public function get_ticket_plural( $label ) {
+        return $this->get_label( 'label_ticket_plural', $label );
+    }
+
+
+    /**
+	 * Gets the label
+	 *
+	 * @param $label string
+	 *
+	 * @return string
+	 */
+    public function get_ticket_plural_lowercase( $label ) {
+        return $this->get_label( 'label_ticket_plural_lowercase', $label );
+    }
+
+
+    /**
 	 * Gets the label
 	 *
 	 * @param $label string
