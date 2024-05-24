@@ -202,6 +202,30 @@ if ( ! class_exists( Settings::class ) ) {
 					'type' => 'html',
 					'html' => '<p>' . esc_html__( 'The following fields allow you to change the default labels. Inputting something other than the default will change that word everywhere it appears.', 'tribe-ext-relabeler' ) . '</p>',
 				],
+				'label_rsvp_single' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'RSVP', 'tribe-ext-relabeler' ),
+					'default'         => esc_attr__( 'RSVP', 'tribe-ext-relabeler' ),
+					'tooltip'         => esc_html__( 'Singular label for RSVPs.', 'tribe-ext-relabeler' ),
+				],
+				'label_rsvp_single_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'rsvp', 'tribe-ext-relabeler' ),
+					'default'         => esc_attr__( 'rsvp', 'tribe-ext-relabeler' ),
+					'tooltip'         => esc_html__( 'Lowercase singular label for RSVPs.', 'tribe-ext-relabeler' ),
+				],
+				'label_rsvp_plural' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'RSVPs', 'tribe-ext-relabeler' ),
+					'default'         => esc_attr__( 'RSVPs', 'tribe-ext-relabeler' ),
+					'tooltip'         => esc_html__( 'Plural label for RSVPs.', 'tribe-ext-relabeler' ),
+				],
+				'label_rsvp_plural_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'rsvps', 'tribe-ext-relabeler' ),
+					'default'         => esc_attr__( 'rsvps', 'tribe-ext-relabeler' ),
+					'tooltip'         => esc_html__( 'Lowercase plural label for RSVPs.', 'tribe-ext-relabeler' ),
+				],
                 'label_ticket_single' => [
                     'type'            => 'text',
                     'label'           => esc_html__( 'Ticket', 'tribe-ext-relabeler' ),
