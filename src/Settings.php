@@ -207,24 +207,32 @@ if ( ! class_exists( Settings::class ) ) {
 					'label'           => esc_html__( 'RSVP', 'tribe-ext-relabeler' ),
 					'default'         => esc_attr__( 'RSVP', 'tribe-ext-relabeler' ),
 					'tooltip'         => esc_html__( 'Singular label for RSVPs.', 'tribe-ext-relabeler' ),
+                    'validation_type' => 'html',
+
 				],
 				'label_rsvp_single_lowercase' => [
 					'type'            => 'text',
 					'label'           => esc_html__( 'rsvp', 'tribe-ext-relabeler' ),
 					'default'         => esc_attr__( 'rsvp', 'tribe-ext-relabeler' ),
 					'tooltip'         => esc_html__( 'Lowercase singular label for RSVPs.', 'tribe-ext-relabeler' ),
+                    'validation_type' => 'html',
+
 				],
 				'label_rsvp_plural' => [
 					'type'            => 'text',
 					'label'           => esc_html__( 'RSVPs', 'tribe-ext-relabeler' ),
 					'default'         => esc_attr__( 'RSVPs', 'tribe-ext-relabeler' ),
 					'tooltip'         => esc_html__( 'Plural label for RSVPs.', 'tribe-ext-relabeler' ),
+                    'validation_type' => 'html',
+
 				],
 				'label_rsvp_plural_lowercase' => [
 					'type'            => 'text',
 					'label'           => esc_html__( 'rsvps', 'tribe-ext-relabeler' ),
 					'default'         => esc_attr__( 'rsvps', 'tribe-ext-relabeler' ),
 					'tooltip'         => esc_html__( 'Lowercase plural label for RSVPs.', 'tribe-ext-relabeler' ),
+                    'validation_type' => 'html',
+
 				],
                 'label_ticket_single' => [
                     'type'            => 'text',
