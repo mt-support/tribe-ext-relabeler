@@ -48,7 +48,7 @@ if ( ! class_exists( Settings::class ) ) {
 		}
 
 		/**
-		 * Add a tab to the display settings.
+		 * Add a tab to the Display settings.
 		 *
 		 * @since 1.2.0
 		 *
@@ -59,10 +59,10 @@ if ( ! class_exists( Settings::class ) ) {
 		public function add_settings_tab( $display_tab ) {
 			$labels_tab = new \Tribe__Settings_Tab(
 				'mytab',
-				esc_html__( 'Labels', 'the-events-calendar' ),
+				esc_html_x( 'Labels', 'Settings tab label', 'tribe-ext-relabeler' ),
 				[
 					'priority' => 20,
-					'fields'   => $this->add_settings_2(),
+					'fields'   => $this->add_settings(),
 				]
 			);
 
@@ -76,7 +76,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 *
 		 * @return array
 		 */
-		public function add_settings_2(  ) {
+		public function add_settings() {
 			$settings = [
 				'tec-settings-form__header-block' => ( new Div( new Classes( [ 'tec-settings-form__header-block', 'tec-settings-form__header-block--horizontal' ] ) ) )->add_children(
 					[
