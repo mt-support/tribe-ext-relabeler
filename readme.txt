@@ -1,11 +1,11 @@
 === The Events Calendar Extension: Relabeler ===
-Contributors: ModernTribe
-Donate link: http://m.tri.be/29
+Contributors: theeventscalendar, aguseo
+Donate link: https://evnt.is/29
 Tags: events, calendar
-Requires at least: 4.9
-Tested up to: 5.3.2
-Requires PHP: 5.6
-Stable tag: 1.1.0
+Requires at least: 6.3
+Tested up to: 6.6.2
+Requires PHP: 7.4
+Stable tag: 1.2.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,6 +35,11 @@ Please visit our [extension library](https://theeventscalendar.com/extensions/) 
 We're always interested in your feedback and our [premium forums](https://theeventscalendar.com/support-forums/) are the best place to flag any issues. Do note, however, that the degree of support we provide for extensions like this one tends to be very limited.
 
 == Changelog ==
+
+= [1.2.0] 2024-10-09 =
+
+* Fix - Make sure the settings are visible and work with the new TEC admin interface. [TECEXT-334]
+* Tweak - Move settings to their separate sub-tab under Events > Settings > Display > Labels.
 
 = [1.1.0] 2020-05-01 =
 
