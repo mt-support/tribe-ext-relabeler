@@ -42,7 +42,7 @@ class Main extends Tribe__Extension {
 	protected $label_cache = [];
 
 	/**
-	 * Setup the Extension's properties.
+	 * Set up the Extension's properties.
 	 *
 	 * This always executes even if the required plugins are not present.
 	 */
@@ -55,7 +55,7 @@ class Main extends Tribe__Extension {
 	 *
 	 * Settings_Helper will append a trailing underscore before each option.
 	 *
-	 * @see \Tribe\Extensions\Example\Settings::set_options_prefix()
+	 * @see Settings::set_options_prefix
 	 *
 	 * @return string
 	 */
@@ -118,7 +118,7 @@ class Main extends Tribe__Extension {
 	 * @return bool
 	 */
 	private function php_version_check() {
-		$php_required_version = '5.6';
+		$php_required_version = '7.4';
 
 		if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
 			if (
