@@ -97,7 +97,7 @@ if ( ! class_exists( Settings::class ) ) {
 				),
 			];
 
-			$fields = [
+			$fields_setup = [
 				'labels_heading' => [
 					'type' => 'html',
 					'html' => '<h3 class="tec-settings-form__section-header tec-settings-form__section-header--sub">' . esc_html__( 'Labels', 'tribe-ext-relabeler' ) . '</h3>',
@@ -193,6 +193,11 @@ if ( ! class_exists( Settings::class ) ) {
 					'validation_type' => 'html',
 				],
 			];
+
+			$fields = [];
+			foreach( $fields_setup as $key => $value ) {
+				$fields[ $this->get_options_prefix() . $key ] = $value;
+			}
 
 			$fields = tribe( 'settings' )->wrap_section_content( 'tec-events-settings-calendar-template', $fields );
 
