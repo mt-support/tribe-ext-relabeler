@@ -3,6 +3,11 @@
 namespace Tribe\Extensions\Relabeler;
 
 use Tribe__Settings_Manager;
+use TEC\Common\Admin\Entities\Div;
+use TEC\Common\Admin\Entities\Heading;
+use TEC\Common\Admin\Entities\Paragraph;
+use TEC\Common\Admin\Entities\Plain_Text;
+use Tribe\Utils\Element_Classes as Classes;
 
 if ( ! class_exists( Settings::class ) ) {
 	/**
@@ -57,11 +62,143 @@ if ( ! class_exists( Settings::class ) ) {
 				esc_html__( 'Labels', 'the-events-calendar' ),
 				[
 					'priority' => 20,
-					'fields'   => [],
+					'fields'   => $this->add_settings_2(),
 				]
 			);
 
 			$display_tab->add_child( $labels_tab );
+		}
+
+		/**
+		 * Add the settings to the settings tab.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @return array
+		 */
+		public function add_settings_2(  ) {
+			$settings = [
+				'tec-settings-form__header-block' => ( new Div( new Classes( [ 'tec-settings-form__header-block', 'tec-settings-form__header-block--horizontal' ] ) ) )->add_children(
+					[
+						new Heading(
+							_x( 'Labels', 'Labels settings header', 'tribe-ext-relabeler' ),
+							2,
+							new Classes( [ 'tec-settings-form__section-header' ] )
+						),
+						( new Paragraph( new Classes( [ 'tec-settings-form__section-description' ] ) ) )->add_child(
+							new Plain_Text(
+								__(
+									"The following fields allow you to change the default labels. Inputting something other than the default will change that word everywhere it appears.",
+									'tribe-ext-relabeler'
+								)
+							)
+						),
+					]
+				),
+			];
+
+			$fields = [
+				'labels_heading' => [
+					'type' => 'html',
+					'html' => '<h3 class="tec-settings-form__section-header tec-settings-form__section-header--sub">' . esc_html__( 'Labels', 'tribe-ext-relabeler' ) . '</h3>',
+				],
+				'label_event_single' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'Event', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Event', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Singular label for Events.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_event_single_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'event', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'event', 'the-events-calendar' ),
+					'tooltip'         => sprintf(
+						esc_html__( 'Lowercase singular label for Events. You might wish to also modify the "Events URL Slug" found in the %s events settings tab.', 'tribe-ext-relabeler' ),
+						$this->general_settings_tab_link()
+					),
+					'validation_type' => 'html',
+				],
+				'label_event_plural' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'Events', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Events', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Plural label for Events.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_event_plural_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'events', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'events', 'the-events-calendar' ),
+					'tooltip'         => sprintf(
+						esc_html__( 'Lowercase plural label for Events. You might wish to also modify the "Single Event URL Slug" found in the %s events settings tab.', 'tribe-ext-relabeler' ),
+						$this->general_settings_tab_link()
+					),
+					'validation_type' => 'html',
+				],
+				'label_venue_single' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'Venue', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Venue', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Singular label for Venues.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_venue_single_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'venue', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'venue', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Lowercase singular label for Venues.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_venue_plural' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'Venues', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Venues', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Plural label for Venues.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_venue_plural_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'venues', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'venues', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Lowercase plural label for Venues.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_organizer_single' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'Organizer', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Organizer', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Singular label for Organizers.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_organizer_single_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'organizer', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'organizer', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Lowercase singular label for Organizers.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_organizer_plural' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'Organizers', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'Organizers', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Plural label for Organizers.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+				'label_organizer_plural_lowercase' => [
+					'type'            => 'text',
+					'label'           => esc_html__( 'organizers', 'the-events-calendar' ),
+					'default'         => esc_attr__( 'organizers', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Lowercase plural label for Organizers.', 'tribe-ext-relabeler' ),
+					'validation_type' => 'html',
+				],
+			];
+
+			$fields = tribe( 'settings' )->wrap_section_content( 'tec-events-settings-calendar-template', $fields );
+
+			$settings += $fields;
+
+			return $settings;
 		}
 
 		/**
@@ -317,6 +454,8 @@ if ( ! class_exists( Settings::class ) ) {
 					'validation_type' => 'html',
 				],
 			];
+
+			return $fields;
 
 			$this->settings_helper->add_fields(
 				$this->prefix_settings_field_keys( $fields ),
