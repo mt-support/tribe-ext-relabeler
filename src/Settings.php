@@ -36,8 +36,32 @@ if ( ! class_exists( Settings::class ) ) {
 
 			$this->set_options_prefix( $options_prefix );
 
+			add_action( 'tec_events_settings_tab_display', [ $this, 'add_settings_tab' ] );
+
 			// Add settings specific to OSM
 			add_action( 'admin_init', [ $this, 'add_settings' ] );
+		}
+
+		/**
+		 * Add a tab to the display settings.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param \Tribe__Settings_Tab $display_tab Object containing the data for the settings tab.
+		 *
+		 * @return void
+		 */
+		public function add_settings_tab( $display_tab ) {
+			$labels_tab = new \Tribe__Settings_Tab(
+				'mytab',
+				esc_html__( 'Labels', 'the-events-calendar' ),
+				[
+					'priority' => 20,
+					'fields'   => [],
+				]
+			);
+
+			$display_tab->add_child( $labels_tab );
 		}
 
 		/**
