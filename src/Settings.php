@@ -4,6 +4,7 @@ namespace Tribe\Extensions\Relabeler;
 
 use Tribe__Settings_Manager;
 use TEC\Common\Admin\Entities\Div;
+use TEC\Common\Admin\Entities\Link;
 use TEC\Common\Admin\Entities\Heading;
 use TEC\Common\Admin\Entities\Paragraph;
 use TEC\Common\Admin\Entities\Plain_Text;
@@ -85,13 +86,28 @@ if ( ! class_exists( Settings::class ) ) {
 							2,
 							new Classes( [ 'tec-settings-form__section-header' ] )
 						),
-						( new Paragraph( new Classes( [ 'tec-settings-form__section-description' ] ) ) )->add_child(
-							new Plain_Text(
-								__(
-									"The following fields allow you to change the default labels. Inputting something other than the default will change that word everywhere it appears.",
-									'tribe-ext-relabeler'
-								)
-							)
+						( new Paragraph( new Classes( [ 'tec-settings-form__section-description' ] ) ) )->add_children(
+							[
+								new Plain_Text(
+									__(
+										"The following fields allow you to change the default labels. Inputting something other than the default will change that word everywhere it appears. ",
+										'tribe-ext-relabeler'
+									)
+								),
+								new Plain_Text(
+									// Translators: Beginning of the sentence "Remember to resave the permalinks after doing any changes.
+									__( 'Remember to ', 'tribe-ext-relabeler' ),
+								),
+								new Link(
+										admin_url( 'options-permalink.php' ),
+										// Translators: Middle of the sentence "Remember to resave the permalinks after doing any changes.
+										__( 'resave the permalinks', 'tribe-ext-relabeler' ),
+								),
+								new Plain_Text(
+								// Translators: End of the sentence "Remember to resave the permalinks after doing any changes.
+									__( ' after doing any changes.', 'tribe-ext-relabeler' ),
+								),
+							]
 						),
 					]
 				),
