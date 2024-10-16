@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:         The Events Calendar Extension: Relabeler
- * Description:         Adds option to WP Admin > Events > Display for altering labels. For example, you can change the word "Events" to a different word such as "Gigs".
+ * Description:         Adds the Labels settings tab to WP Admin > Events > Settings > Display for altering labels. For example, you can change the word "Events" to a different word such as "Gigs".
  * Plugin URI:          https://theeventscalendar.com/extensions/change-labels-events-venues-organizers/
  * GitHub Plugin URI:   https://github.com/mt-support/tribe-ext-relabeler
- * Version:             1.1.0
+ * Version:             1.2.0
  * Extension Class:     Tribe\Extensions\Relabeler\Main
- * Author:              Modern Tribe, Inc.
- * Author URI:          http://m.tri.be/1971
+ * Author:              The Events Calendar
+ * Author URI:          https://evnt.is/1971
  * License:             GPLv3 or later
  * License URI:         https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:         tribe-ext-relabeler
@@ -42,7 +42,7 @@ class Main extends Tribe__Extension {
 	protected $label_cache = [];
 
 	/**
-	 * Setup the Extension's properties.
+	 * Set up the Extension's properties.
 	 *
 	 * This always executes even if the required plugins are not present.
 	 */
@@ -55,7 +55,7 @@ class Main extends Tribe__Extension {
 	 *
 	 * Settings_Helper will append a trailing underscore before each option.
 	 *
-	 * @see \Tribe\Extensions\Example\Settings::set_options_prefix()
+	 * @see Settings::set_options_prefix
 	 *
 	 * @return string
 	 */
@@ -118,7 +118,7 @@ class Main extends Tribe__Extension {
 	 * @return bool
 	 */
 	private function php_version_check() {
-		$php_required_version = '5.6';
+		$php_required_version = '7.4';
 
 		if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
 			if (

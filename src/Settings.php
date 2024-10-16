@@ -3,6 +3,12 @@
 namespace Tribe\Extensions\Relabeler;
 
 use Tribe__Settings_Manager;
+use TEC\Common\Admin\Entities\Div;
+use TEC\Common\Admin\Entities\Link;
+use TEC\Common\Admin\Entities\Heading;
+use TEC\Common\Admin\Entities\Paragraph;
+use TEC\Common\Admin\Entities\Plain_Text;
+use Tribe\Utils\Element_Classes as Classes;
 
 if ( ! class_exists( Settings::class ) ) {
 	/**
@@ -36,171 +42,81 @@ if ( ! class_exists( Settings::class ) ) {
 
 			$this->set_options_prefix( $options_prefix );
 
+			add_action( 'tec_events_settings_tab_display', [ $this, 'add_settings_tab' ] );
+
 			// Add settings specific to OSM
 			add_action( 'admin_init', [ $this, 'add_settings' ] );
 		}
 
 		/**
-		 * Allow access to set the Settings Helper property.
+		 * Add a tab to the Display settings.
 		 *
-		 * @see get_settings_helper()
+		 * @since 1.2.0
 		 *
-		 * @param Settings_Helper $helper
+		 * @param \Tribe__Settings_Tab $display_tab Object containing the data for the settings tab.
 		 *
-		 * @return Settings_Helper
+		 * @return void
 		 */
-		public function set_settings_helper( Settings_Helper $helper ) {
-			$this->settings_helper = $helper;
+		public function add_settings_tab( $display_tab ) {
+			$labels_tab = new \Tribe__Settings_Tab(
+				'display-labels-tab',
+				esc_html_x( 'Labels', 'Settings tab label', 'tribe-ext-relabeler' ),
+				[
+					'priority' => 20,
+					'fields'   => $this->add_settings(),
+				]
+			);
 
-			return $this->get_settings_helper();
+			$display_tab->add_child( $labels_tab );
 		}
 
 		/**
-		 * Allow access to get the Settings Helper property.
+		 * Add the settings to the settings tab.
 		 *
-		 * @see set_settings_helper()
-		 */
-		public function get_settings_helper() {
-			return $this->settings_helper;
-		}
-
-		/**
-		 * Set the options prefix to be used for this extension's settings.
-		 *
-		 * Recommended: the plugin text domain, with hyphens converted to underscores.
-		 * Is forced to end with a single underscore. All double-underscores are converted to single.
-		 *
-		 * @see get_options_prefix()
-		 *
-		 * @param string $options_prefix
-		 */
-		private function set_options_prefix( $options_prefix ) {
-			$options_prefix = $options_prefix . '_';
-
-			$this->options_prefix = str_replace( '__', '_', $options_prefix );
-		}
-
-		/**
-		 * Get this extension's options prefix.
-		 *
-		 * @see set_options_prefix()
-		 *
-		 * @return string
-		 */
-		public function get_options_prefix() {
-			return $this->options_prefix;
-		}
-
-		/**
-		 * Given an option key, get this extension's option value.
-		 *
-		 * This automatically prepends this extension's option prefix so you can just do `$this->get_option( 'a_setting' )`.
-		 *
-		 * @see tribe_get_option()
-		 *
-		 * @param string $key
-		 *
-		 * @return mixed
-		 */
-		public function get_option( $key = '', $default = '' ) {
-			$key = $this->sanitize_option_key( $key );
-
-			return tribe_get_option( $key, $default );
-		}
-
-		/**
-		 * Get an option key after ensuring it is appropriately prefixed.
-		 *
-		 * @param string $key
-		 *
-		 * @return string
-		 */
-		private function sanitize_option_key( $key = '' ) {
-			$prefix = $this->get_options_prefix();
-
-			if ( 0 === strpos( $key, $prefix ) ) {
-				$prefix = '';
-			}
-
-			return $prefix . $key;
-		}
-
-		/**
-		 * Get an array of all of this extension's options without array keys having the redundant prefix.
+		 * @since 1.2.0
 		 *
 		 * @return array
-		 */
-		public function get_all_options() {
-			$raw_options = $this->get_all_raw_options();
-
-			$result = [];
-
-			$prefix = $this->get_options_prefix();
-
-			foreach ( $raw_options as $key => $value ) {
-				$abbr_key            = str_replace( $prefix, '', $key );
-				$result[ $abbr_key ] = $value;
-			}
-
-			return $result;
-		}
-
-		/**
-		 * Get an array of all of this extension's raw options (i.e. the ones starting with its prefix).
-		 *
-		 * @return array
-		 */
-		public function get_all_raw_options() {
-			$tribe_options = Tribe__Settings_Manager::get_options();
-
-			if ( ! is_array( $tribe_options ) ) {
-				return [];
-			}
-
-			$result = [];
-
-			foreach ( $tribe_options as $key => $value ) {
-				if ( 0 === strpos( $key, $this->get_options_prefix() ) ) {
-					$result[ $key ] = $value;
-				}
-			}
-
-			return $result;
-		}
-
-		/**
-		 * Given an option key, delete this extension's option value.
-		 *
-		 * This automatically prepends this extension's option prefix so you can just do `$this->delete_option( 'a_setting' )`.
-		 *
-		 * @param string $key
-		 *
-		 * @return mixed
-		 */
-		public function delete_option( $key = '' ) {
-			$key = $this->sanitize_option_key( $key );
-
-			$options = Tribe__Settings_Manager::get_options();
-
-			unset( $options[ $key ] );
-
-			return Tribe__Settings_Manager::set_options( $options );
-		}
-
-		/**
-		 * Adds a new section of fields to Events > Settings > Display tab, appearing after the "Basic Template" section
-		 * and before the "Date Format Settings" section.
 		 */
 		public function add_settings() {
+			$settings = [
+				'tec-settings-form__header-block' => ( new Div( new Classes( [ 'tec-settings-form__header-block', 'tec-settings-form__header-block--horizontal' ] ) ) )->add_children(
+					[
+						new Heading(
+							_x( 'Labels', 'Labels settings header', 'tribe-ext-relabeler' ),
+							2,
+							new Classes( [ 'tec-settings-form__section-header' ] )
+						),
+						( new Paragraph( new Classes( [ 'tec-settings-form__section-description' ] ) ) )->add_children(
+							[
+								new Plain_Text(
+									__(
+										"The following fields allow you to change the default labels. Inputting something other than the default will change that word everywhere it appears. ",
+										'tribe-ext-relabeler'
+									)
+								),
+								new Plain_Text(
+									// Translators: Beginning of the sentence "Remember to resave the permalinks after doing any changes.
+									__( 'Remember to ', 'tribe-ext-relabeler' ),
+								),
+								new Link(
+										admin_url( 'options-permalink.php' ),
+										// Translators: Middle of the sentence "Remember to resave the permalinks after doing any changes.
+										__( 'resave the permalinks', 'tribe-ext-relabeler' ),
+								),
+								new Plain_Text(
+								// Translators: End of the sentence "Remember to resave the permalinks after doing any changes.
+									__( ' after doing any changes.', 'tribe-ext-relabeler' ),
+								),
+							]
+						),
+					]
+				),
+			];
 
-			$fields = [
+			$fields_setup = [
 				'labels_heading' => [
 					'type' => 'html',
-					'html' => '<h3>' . esc_html__( 'Labels', 'tribe-ext-relabeler' ) . '</h3>',
-				],
-				'labels_helper_text' => [
-					'type' => 'html',
-					'html' => '<p>' . esc_html__( 'The following fields allow you to change the default labels. Inputting something other than the default will change that word everywhere it appears.', 'tribe-ext-relabeler' ) . '</p>',
+					'html' => '<h3 class="tec-settings-form__section-header tec-settings-form__section-header--sub">' . esc_html__( 'Labels', 'tribe-ext-relabeler' ) . '</h3>',
 				],
 				'label_event_single' => [
 					'type'            => 'text',
@@ -294,12 +210,163 @@ if ( ! class_exists( Settings::class ) ) {
 				],
 			];
 
-			$this->settings_helper->add_fields(
-				$this->prefix_settings_field_keys( $fields ),
-				'display',
-				'tribeEventsDateFormatSettingsTitle',
-				true
-			);
+			$fields = [];
+			foreach( $fields_setup as $key => $value ) {
+				$fields[ $this->get_options_prefix() . $key ] = $value;
+			}
+
+			$fields = tribe( 'settings' )->wrap_section_content( 'tec-events-settings-calendar-template', $fields );
+
+			$settings += $fields;
+
+			return $settings;
+		}
+
+		/**
+		 * Allow access to set the Settings Helper property.
+		 *
+		 * @see get_settings_helper()
+		 *
+		 * @param Settings_Helper $helper
+		 *
+		 * @return Settings_Helper
+		 */
+		public function set_settings_helper( Settings_Helper $helper ) {
+			$this->settings_helper = $helper;
+
+			return $this->get_settings_helper();
+		}
+
+		/**
+		 * Allow access to get the Settings Helper property.
+		 *
+		 * @see set_settings_helper()
+		 */
+		public function get_settings_helper() {
+			return $this->settings_helper;
+		}
+
+		/**
+		 * Set the options prefix to be used for this extension's settings.
+		 *
+		 * Recommended: the plugin text domain, with hyphens converted to underscores.
+		 * Is forced to end with a single underscore. All double-underscores are converted to single.
+		 *
+		 * @see get_options_prefix()
+		 *
+		 * @param string $options_prefix
+		 */
+		private function set_options_prefix( $options_prefix ) {
+			$options_prefix = $options_prefix . '_';
+
+			$this->options_prefix = str_replace( '__', '_', $options_prefix );
+		}
+
+		/**
+		 * Get this extension's options prefix.
+		 *
+		 * @see set_options_prefix()
+		 *
+		 * @return string
+		 */
+		public function get_options_prefix() {
+			return $this->options_prefix;
+		}
+
+		/**
+		 * Given an option key, get this extension's option value.
+		 *
+		 * This automatically prepends this extension's option prefix, so you can just do `$this->get_option( 'a_setting' )`.
+		 *
+		 * @see tribe_get_option()
+		 *
+		 * @param string $key
+		 *
+		 * @return mixed
+		 */
+		public function get_option( $key = '', $default = '' ) {
+			$key = $this->sanitize_option_key( $key );
+
+			return tribe_get_option( $key, $default );
+		}
+
+		/**
+		 * Get an option key after ensuring it is appropriately prefixed.
+		 *
+		 * @param string $key
+		 *
+		 * @return string
+		 */
+		private function sanitize_option_key( $key = '' ) {
+			$prefix = $this->get_options_prefix();
+
+			if ( 0 === strpos( $key, $prefix ) ) {
+				$prefix = '';
+			}
+
+			return $prefix . $key;
+		}
+
+		/**
+		 * Get an array of all of this extension's options without array keys having the redundant prefix.
+		 *
+		 * @return array
+		 */
+		public function get_all_options() {
+			$raw_options = $this->get_all_raw_options();
+
+			$result = [];
+
+			$prefix = $this->get_options_prefix();
+
+			foreach ( $raw_options as $key => $value ) {
+				$abbr_key            = str_replace( $prefix, '', $key );
+				$result[ $abbr_key ] = $value;
+			}
+
+			return $result;
+		}
+
+		/**
+		 * Get an array of all of this extension's raw options (i.e. the ones starting with its prefix).
+		 *
+		 * @return array
+		 */
+		public function get_all_raw_options() {
+			$tribe_options = Tribe__Settings_Manager::get_options();
+
+			if ( ! is_array( $tribe_options ) ) {
+				return [];
+			}
+
+			$result = [];
+
+			foreach ( $tribe_options as $key => $value ) {
+				if ( 0 === strpos( $key, $this->get_options_prefix() ) ) {
+					$result[ $key ] = $value;
+				}
+			}
+
+			return $result;
+		}
+
+		/**
+		 * Given an option key, delete this extension's option value.
+		 *
+		 * This automatically prepends this extension's option prefix, so you can just do `$this->delete_option( 'a_setting' )`.
+		 *
+		 * @param string $key
+		 *
+		 * @return mixed
+		 */
+		public function delete_option( $key = '' ) {
+			$key = $this->sanitize_option_key( $key );
+
+			$options = Tribe__Settings_Manager::get_options();
+
+			unset( $options[ $key ] );
+
+			return Tribe__Settings_Manager::set_options( $options );
 		}
 
 		/**
@@ -328,7 +395,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 * @return string HTML link element to the general settings tab
 		 */
 		protected function general_settings_tab_link() {
-			$url = \Tribe__Settings::instance()->get_url( [ 'tab' => 'general' ] );
+			$url = tribe( 'settings' )->get_tab_url( 'general-viewing-tab' );
 
 			return sprintf(
 				'<a href="%2$s">%1$s</a>',
