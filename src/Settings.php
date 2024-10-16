@@ -95,17 +95,12 @@ if ( ! class_exists( Settings::class ) ) {
 									)
 								),
 								new Plain_Text(
-									// Translators: Beginning of the sentence "Remember to resave the permalinks after doing any changes.
-									__( 'Remember to ', 'tribe-ext-relabeler' ),
+									__( 'Remember to resave the permalinks after doing any changes. ', 'tribe-ext-relabeler' ),
 								),
 								new Link(
 										admin_url( 'options-permalink.php' ),
-										// Translators: Middle of the sentence "Remember to resave the permalinks after doing any changes.
-										__( 'resave the permalinks', 'tribe-ext-relabeler' ),
-								),
-								new Plain_Text(
-								// Translators: End of the sentence "Remember to resave the permalinks after doing any changes.
-									__( ' after doing any changes.', 'tribe-ext-relabeler' ),
+										// translators: This will be linked to the permalinks settings page.
+										__( 'Go to permalinks.', 'tribe-ext-relabeler' ),
 								),
 							]
 						),
