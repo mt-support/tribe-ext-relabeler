@@ -99,7 +99,7 @@ if ( ! class_exists( Settings::class ) ) {
 								),
 								new Link(
 										admin_url( 'options-permalink.php' ),
-										// translators: This will be linked to the permalinks settings page.
+										// translators: This is linked to the permalinks settings page.
 										__( 'Go to permalinks.', 'tribe-ext-relabeler' ),
 								),
 							]
